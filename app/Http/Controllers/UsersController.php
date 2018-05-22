@@ -106,6 +106,12 @@ class UsersController extends Controller
         Session::flash('success', 'Deleted user');
         return redirect()->back();
     }
+    /**
+     * Remove active parameter from the user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function deactivate($id)
     {
         $user = User::find($id);
@@ -114,6 +120,12 @@ class UsersController extends Controller
         Session::flash('success', 'Successfully user deactivate');
         return redirect()->back();
     }
+    /**
+     * Activate user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function activate($id)
     {
         $user = User::find($id);
@@ -136,6 +148,12 @@ class UsersController extends Controller
         Session::flash('success', 'Successfully changed user permissions');
         return redirect()->back();
     }
+    /**
+     * Whithdraw admin permission to user.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */   
     public function not_admin($id)
     {
         $user = User::find($id);
