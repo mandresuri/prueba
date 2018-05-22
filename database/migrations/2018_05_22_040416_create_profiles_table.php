@@ -18,7 +18,6 @@ class CreateProfilesTable extends Migration
             $table->increments('id');
             $table->string('avatar')->nullable();
             $table->integer('user_id');
-            $table->boolean('active')->default(1);
             $table->text('about')->nullable();
             $table->timestamps();
         });

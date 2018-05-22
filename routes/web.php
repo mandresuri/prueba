@@ -32,6 +32,14 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'UsersController@store',
         'as' => 'user.store'
     ]);
+    Route::get('/user/deactivate{id}',[
+        'uses' => 'UsersController@deactivate',
+        'as' => 'user.deactivate'
+    ]);
+    Route::get('/user/activate{id}',[
+        'uses' => 'UsersController@activate',
+        'as' => 'user.activate'
+    ]);
     Route::get('/user/delete/{id}',[
         'uses' => 'UsersController@destroy',
         'as' => 'user.delete'

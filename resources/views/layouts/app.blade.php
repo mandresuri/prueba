@@ -26,6 +26,11 @@
         {{ Session::get('success') }}
         </div>
     @endif
+    @if(Session::has('info'))
+    <div class="alert alert-success">
+    {{ Session::get('info') }}
+    </div>
+@endif
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">

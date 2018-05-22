@@ -106,6 +106,22 @@ class UsersController extends Controller
         Session::flash('success', 'Deleted user');
         return redirect()->back();
     }
+    public function deactivate($id)
+    {
+        $user = User::find($id);
+        $user->active = 0;
+        $user->save();
+        Session::flash('success', 'Successfully user deactivate');
+        return redirect()->back();
+    }
+    public function activate($id)
+    {
+        $user = User::find($id);
+        $user->active = 1;
+        $user->save();
+        Session::flash('success', 'Successfully user activate');
+        return redirect()->back();
+    }
     /**
      * Give admin permission to user.
      *

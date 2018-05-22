@@ -87,7 +87,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->profile->about = $request->about;
         $user->profile->save();
-        if($request->has('password'))
+        if($request->filled('password'))
         {
             $user->password = bcrypt($request->password);
         }

@@ -19,6 +19,9 @@
                                         Permissions
                                   </th>
                                   <th>
+                                        Deactivate
+                                  </th>
+                                  <th>
                                         Delete
                                   </th>
                         </thead>
@@ -26,7 +29,7 @@
                         <tbody>
                             @if($users->count()>0)
                                 @foreach($users as $user)
-                                    <tr>
+                                    <tr>                                    
                                         <td>
                                             <img src="{{ asset($user->profile->avatar) }}" alt="" width="60px" height="60px" style="border-radius: 50%;">
                                         </td>
@@ -38,6 +41,15 @@
                                                 <a href="{{ route('user.not.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-danger">Remove permissions</a>
                                             @else
                                                 <a href="{{ route('user.admin', ['id' => $user->id]) }}" class="btn btn-xs btn-success">Make admin</a>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if(Auth::id() !== $user->id)
+                                                @if(!$user->active)
+                                                    <a href="{{ route('user.activate', ['id' => $user->id]) }}" class="btn btn-xs btn-success">Activate User</a>
+                                                @else
+                                                    <a href="{{ route('user.deactivate', ['id' => $user->id]) }}" class="btn btn-xs btn-danger">Deactivate User</a>                                            
+                                                @endif
                                             @endif
                                         </td>
                                         <td>
