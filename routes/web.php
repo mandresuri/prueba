@@ -28,8 +28,28 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function(){
         'uses' => 'UsersController@create',
         'as' => 'user.create'
     ]);
-    Route::get('/user/store',[
+    Route::post('/user/store',[
         'uses' => 'UsersController@store',
         'as' => 'user.store'
+    ]);
+    Route::get('/user/delete/{id}',[
+        'uses' => 'UsersController@destroy',
+        'as' => 'user.delete'
+    ]);
+    Route::get('user/admin/{id}',[
+        'uses' => 'UsersController@admin',
+        'as'   => 'user.admin'
+    ]);
+    Route::get('user/not-admin/{id}',[
+        'uses' => 'UsersController@not_admin',
+        'as'   => 'user.not.admin'
+    ]);
+    Route::get('user/profile',[
+        'uses' => 'ProfileController@index',
+        'as'   => 'user.profile'
+    ]);
+    Route::post('user/profile/update',[
+        'uses' => 'ProfileController@update',
+        'as'   => 'user.profile.update'
     ]);
 });
