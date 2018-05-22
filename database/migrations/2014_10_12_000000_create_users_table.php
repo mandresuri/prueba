@@ -7,7 +7,7 @@ use Illuminate\Database\Migrations\Migration;
 class CreateUsersTable extends Migration
 {
     /**
-     * Run the migrations.
+     * Run the migrations, include permissions(admin, non-admin)
      *
      * @return void
      */
@@ -17,6 +17,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
+            $table->boolean('admin')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
