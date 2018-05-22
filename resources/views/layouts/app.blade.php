@@ -66,9 +66,30 @@
                 </div>
             </div>
         </nav>
-
+        
         <main class="py-4">
-            @yield('content')
+                <div class="container">
+                        <div class="row">
+                            @if(Auth::check())
+                            <div class="col-lg-4">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <a href="/home">Home</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                        <a href="{{ route('users') }}">Users</a>
+                                        </li>
+                                        <li class="list-group-item">
+                                                <a href="{{ route('user.create') }}">New User</a>
+                                        </li>
+                                    </ul>                    
+                            </div>
+                            @endif
+                            <div class="col-lg-8">
+                                @yield('content')
+                            </div>
+                        </div>
+                    </div>
         </main>
     </div>
 </body>
